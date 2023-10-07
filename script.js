@@ -41,18 +41,24 @@ function playAround(playerSelection, computerSelection) {
 }
 
 function playerPlayed() {
-  let playerChoice = prompt("Please enter rock, paper, or scissors:");
-
+  let playerChoice;
 
   while (true) {
-    if (
-      isNaN(playerChoice) && // Check if it's not a number
-      (playerChoice.toLowerCase() === "rock" || playerChoice.toLowerCase() === "paper" || playerChoice.toLowerCase() === "scissors")
-    ) {
-      return playerChoice; // Return the valid choice and exit the loop
+    playerChoice = prompt("Please enter rock, paper, or scissors:");
+
+    if (playerChoice === null || playerChoice === "") {
+      const exitGame = confirm("Do you want to exit the game?");
+      if (exitGame) {
+        return null;
+      }
     } else {
-      playerChoice = prompt("Wrong Input. Try again. Enter rock, paper, or scissors.");
+      playerChoice = playerChoice.toLowerCase().trim();
+
+      if (["rock", "paper", "scissors"].includes(playerChoice)) {
+        return playerChoice;
+      }
     }
+    alert("Invalid input. Please enter 'rock', 'paper', or 'scissors'.");
   }
 }
 
@@ -68,8 +74,6 @@ function computerPlay() {
 }
 
 function game() {
-  alert("Hello");
-  alert("This game will be played through the console press Shift + CTRL + J ");
   let gameRound;
   let playerScore = 0;
   let computerScore = 0;
