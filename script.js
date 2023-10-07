@@ -1,5 +1,4 @@
 
-
 function playAround(playerSelection, computerSelection) {
   /*check the user input*/
 
@@ -69,6 +68,8 @@ function computerPlay() {
 }
 
 function game() {
+  alert("Hello");
+  alert("This game will be played through the console press Shift + CTRL + J ");
   let gameRound;
   let playerScore = 0;
   let computerScore = 0;
@@ -90,14 +91,15 @@ function game() {
     }
   }
   if (playerScore > computerScore) {
-    console.log("You win the game noooo player score: " + playerScore + "computer score: " + computerScore);
+    console.log("You win the game noooo player score: " + playerScore + " computer score: " + computerScore);
   } else if (computerScore > playerScore) {
-    console.log("You lost the game hahaha player score: " + playerScore + "computer score: " + computerScore);
+    console.log("You lost the game hahaha player score: " + playerScore + " computer score: " + computerScore);
   } else {
     console.log("The game is a draw :| player score: " + playerScore + " computer score: " + computerScore);
   }
 
 }
+
 game();
 
 
