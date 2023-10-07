@@ -1,5 +1,4 @@
-const startButton = document.querySelector("#start");
-startButton.addEventListener("click", game);
+
 
 function playAround(playerSelection, computerSelection) {
   /*check the user input*/
@@ -44,17 +43,16 @@ function playAround(playerSelection, computerSelection) {
 
 function playerPlayed() {
   let playerChoice = prompt("Please enter rock, paper, or scissors:");
-  playerChoice = playerChoice.toLowerCase();
+
 
   while (true) {
     if (
       isNaN(playerChoice) && // Check if it's not a number
-      (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors")
+      (playerChoice.toLowerCase() === "rock" || playerChoice.toLowerCase() === "paper" || playerChoice.toLowerCase() === "scissors")
     ) {
       return playerChoice; // Return the valid choice and exit the loop
     } else {
       playerChoice = prompt("Wrong Input. Try again. Enter rock, paper, or scissors.");
-      playerChoice = playerChoice.toLowerCase();
     }
   }
 }
@@ -77,7 +75,7 @@ function game() {
   for (let gameRound = 0; gameRound < 5; gameRound++) {
     const playerSelection = playerPlayed();
     if (playerSelection === null) {
-      quittingGame();
+
       //   playerPlayed();
       break;
     }
@@ -91,69 +89,16 @@ function game() {
       computerScore += 1;
     }
   }
-
-  if (gameRound < 5) {
-    return quittingGame();
-  } else if (playerScore > computerScore) {
-    return playerWins();
+  if (playerScore > computerScore) {
+    console.log("You win the game noooo player score: " + playerScore + "computer score: " + computerScore);
   } else if (computerScore > playerScore) {
-    return computerWins();
+    console.log("You lost the game hahaha player score: " + playerScore + "computer score: " + computerScore);
   } else {
-    return drawPlay();
+    console.log("The game is a draw :| player score: " + playerScore + " computer score: " + computerScore);
   }
+
 }
+game();
 
 
-function quittingGame() {
-  const textTitle = document.querySelector(".title");
-  const textParagraf = document.querySelectorAll(".paragraph");
-  const buttonText = document.querySelector("#start");
-
-  textTitle.textContent = `Running away, are you?`;
-  textParagraf[0].textContent = "That's right, run and hide";
-  textParagraf[1].textContent = " while I conquer the world";
-  textParagraf[2].textContent = "muahhhhaahahahahaah";
-  buttonText.textContent = "GET BACK TO THE GAME";
-  playerPlayed();
-}
-
-function playerWins() {
-  const textTitle = document.querySelector(".title");
-  const textParagraf = document.querySelectorAll(".paragraph");
-  const buttonText = document.querySelector("#start");
-  const backgroundWinner = document.body;
-
-  backgroundWinner.style.background = "#ff0000";
-  textTitle.textContent = `Oh noooo!!! Ohhh nooo`;
-  textParagraf[0].textContent = "You defeated me!";
-  textParagraf[1].textContent = "😱😱😱😱";
-  textParagraf[2].textContent = "How was this possible?!";
-  buttonText.textContent = "Wipe out every trace";
-}
-
-function computerWins() {
-  const textTitle = document.querySelector(".title");
-  const textParagraf = document.querySelectorAll(".paragraph");
-  const buttonText = document.querySelector("#start");
-  const backgroundWinner = document.body;
-
-  backgroundWinner.style.background = "#0000cc";
-  textTitle.textContent = `GAME OVER! Loserrrrr . `;
-  textParagraf[0].textContent = "😂😂😂😂";
-  textParagraf[1].textContent = "Now, I shall conquer the world!";
-  textParagraf[2].textContent = "😈😈😈";
-  buttonText.textContent = "Start world domination!!";
-}
-
-function drawPlay() {
-  const textTitle = document.querySelector(".title");
-  const textParagraf = document.querySelectorAll(".paragraph");
-  const buttonText = document.querySelector("#start");
-
-  textTitle.textContent = `It's a tie! Let's play again.`;
-  textParagraf[0].textContent = "You will never defeat me";
-  textParagraf[1].textContent = "I shall conquer the world!";
-  textParagraf[2].textContent = "😈😈😈";
-  buttonText.textContent = "Restart the game";
-}
 
